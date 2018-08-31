@@ -14,10 +14,19 @@ func makeIncrementor(forIncrement amount: Int) -> () -> Int {
     return incrementor
 }
 
+////////
+// 闭包的捕获值
 let incrementByTen = makeIncrementor(forIncrement: 10)
 incrementByTen()
 incrementByTen()
 incrementByTen()
+
+let incrementbySeven = makeIncrementor(forIncrement: 7)
+incrementbySeven()
+incrementByTen()
+
+let alsoIncrementByTen = incrementByTen
+alsoIncrementByTen()
 
 ////////
 // 闭包的几种写法
@@ -32,18 +41,17 @@ func compare(i1: Int, i2: Int) -> Bool {
 }
 // 基础
 var sortedNumberA = sort(array: numbers, compare)
-//
+// 闭包表达式
 var sortedNumberB = sort(array: numbers, { (i1: Int, i2: Int) -> Bool in return i1 > i2})
-
+// 尾闭包写法1
 var sortedNumberC = sort(array: numbers) { (i1: Int, i2: Int) -> Bool in
     return i1 > i2
 }
-
+// 闭包表达式 简化1
 var sortedNumberD = sort(array: numbers, {i1, i2 in return i1 > i2})
-
+// 尾闭包写法2
 var sortedNumberE = sort(array: numbers) {i1, i2 in return i1 > i2}
-
+// 闭包表达式 简化2
 var sortedNumberF = sort(array: numbers, {$0 > $1})
-
+// 闭包表达式 简化3
 var sortedNumberG = sort(array: numbers, >)
-
