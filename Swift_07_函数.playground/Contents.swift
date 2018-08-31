@@ -100,28 +100,27 @@ func chooseBankingBusinessB(bankingBusiness: String) -> (String)->Bool {
 let bankingBusubessB = chooseBankingBusinessB(bankingBusiness: "存款")
 bankingBusubessB("234")
 
-/// 闭包
-func sort(array: [Int], compareFunc: (Int, Int)->Bool) -> [Int] {
-    return [1,1,1]
+//////////////////////
+// 柯里化函数
+
+// 普通形式
+func calcA(x: Int, y: Int, z: Int) -> Int {
+    return x+y+z
 }
 
-var numbers = [1, 2, 34, 235]
-var sortedNumber = sort(array: numbers, compareFunc: {(i1: Int, i2: Int)->Bool in return i1 > i2})
-
-//
-func makeIncrementor(forIncrement amount: Int) -> () -> Int {
-    var runningTotal = 0
-    func incrementor() -> Int {
-        runningTotal += amount
-        return runningTotal
+// 柯里化形式
+func calcB(x: Int) -> ((Int)->(Int)->Int) {
+    func calcInner1(y: Int) -> ((Int) -> Int) {
+        func calcInner2(z: Int) -> Int {
+            return x + y + z
+        }
+        return calcInner2
     }
-    return incrementor
+    return calcInner1
 }
+let functA = calcB(x: 2)(3)(1)
 
-let incrementByTen = makeIncrementor(forIncrement: 10)
-incrementByTen()
-incrementByTen()
-incrementByTen()
-
-
-
+// 隐式柯里化形式 3.0已废弃
+//func calcC(x: Int)(y: Int)(z: Int) -> Int {
+//    return x+y+z
+//}
