@@ -1,0 +1,5 @@
+
+mutating
+Collection
+where
+map<T>(_ transform: (Int) throws -> T) rethrows -> [T]
