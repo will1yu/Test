@@ -1,0 +1,15 @@
+
+mutating
+Collection
+where
+map<T>(_ transform: (Int) throws -> T) rethrows -> [T]
+throw rethrows
+
+运算符?? x = a ?? b
+1.if a == nil , x = b
+2.1 if a != nil && a is optional, x = a!
+2.2 if a != nil && !(a is optional), x = a?
+
+defer
+map/filter/reduct
+@discardableResult
