@@ -4,6 +4,8 @@
         <page name='Sudoku'/>
         <page name='Skyscrapers'/>
         <page name='Sort'/>
+        <page name='BombMan'/>
+        <page name='StickCount'/>
         <page name='AllSort'/>
         <page name='CatGetFish'/>
     </pages>
